@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cheerz – Support & Privacy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050608;
+      --card: #111318;
+      --accent: #ffb800;
+      --accent-soft: rgba(255, 184, 0, 0.12);
+      --text-main: #f7f7f7;
+      --text-muted: #a4a6ad;
+      --border: #22242b;
+      --link: #ffd65c;
+      --radius-lg: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #171921 0, #050608 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 6, 8, 0.94),
+        rgba(5, 6, 8, 0.86)
+      );
+    }
+
+    .nav {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .logo-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, #ffffff, #ffb800 45%, #e09a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #121212;
+      font-size: 16px;
+      box-shadow: 0 0 0 2px #121212, 0 12px 35px rgba(0, 0, 0, 0.7);
+    }
+
+    .nav-links a {
+      margin-left: 14px;
+      font-size: 14px;
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.18s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 26px 20px 60px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 26px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4vw, 34px);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 32rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 184, 0, 0.16);
+      color: #fce2a0;
+      margin-bottom: 10px;
+    }
+
+    .glass-card {
+      background: radial-gradient(circle at top, #2d2313, #111318 52%, #050608);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 18px 18px 16px;
+      box-shadow:
+        0 32px 80px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(255, 231, 179, 0.15), transparent 54%),
+        radial-gradient(circle at 100% 0, rgba(255, 184, 0, 0.18), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .stat strong {
+      color: #ffd770;
+      font-size: 18px;
+    }
+
+    .badge-list {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      color: #ffe199;
+      border: 1px solid rgba(255, 225, 153, 0.5);
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--text-main);
+      margin: 6px 0 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 4px 0 12px;
+    }
+
+    li {
+      font-size: 14px;
+      color: var(--text-main);
+      margin: 4px 0;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      margin-top: 12px;
+    }
+
+    .card.highlight {
+      border-color: rgba(255, 184, 0, 0.55);
+      background: radial-gradient(circle at top, rgba(255, 184, 0, 0.12), #111318);
+    }
+
+    a {
+      color: var(--link);
+    }
+
+    code {
+      font-family: Menlo, SFMono-Regular, ui-monospace, monospace;
+      font-size: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    footer {
+      max-width: 900px;
+      margin: 30px auto 26px;
+      padding: 0 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-icon">🍺</div>
+        <span>Cheerz</span>
+      </div>
+      <div class="nav-links">
+        <a href="#support">Support</a>
+        <a href="#privacy">Privacy</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div>
+        <div class="pill">Cheerz • Drink tracking with friends</div>
+        <h1 class="hero-title">Support & Privacy</h1>
+        <p class="hero-subtitle">
+          This page explains how Cheerz works behind the scenes and how we handle your data.
+          We keep things simple: no paywalls, no dark patterns – just lightweight analytics
+          and drinks you choose to log.
+        </p>
+      </div>
+      <div class="glass-card">
+        <div class="card-inner">
+          <div class="stat">
+            <span>App status</span>
+            <strong>Live on iOS</strong>
+          </div>
+          <div class="stat">
+            <span>Price</span>
+            <strong>Free</strong>
+          </div>
+          <div class="stat">
+            <span>Tracking</span>
+            <strong>Minimal</strong>
+          </div>
+          <div class="badge-list">
+            <span class="badge">No ads (for now)</span>
+            <span class="badge">Anon sign-in</span>
+            <span class="badge">Firebase backend</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support -->
+    <section id="support">
+      <h2>Support</h2>
+      <p>
+        If you have any questions, spot a bug, or want your data removed, you can reach the
+        developer directly:
+      </p>
+
+      <div class="card highlight">
+        <!-- TODO: replace with your real email -->
+        <p><strong>Email:</strong> <a href="mailto:support@cheerz-app.example">support@cheerz-app.example</a></p>
+        <p><strong>Typical response time:</strong> 1–3 business days.</p>
+      </div>
+
+      <div class="card">
+        <h3>When contacting support, please include:</h3>
+        <ul>
+          <li>The email address or Apple ID you use with Cheerz (if any).</li>
+          <li>Your device model and iOS version (for example: iPhone 15, iOS 18.1).</li>
+          <li>A short description of what happened and, if possible, a screenshot.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Feature requests & feedback</h3>
+        <p>
+          Cheerz is a small, indie project. If there’s something you’d love to see – like new
+          achievements, different themes, or better stats – send an email titled
+          <code>[Feedback]</code> and it will be read.
+        </p>
+      </div>
+    </section>
+
+    <!-- Privacy Policy -->
+    <section id="privacy">
+      <h2>Privacy Policy</h2>
+      <p><em>Last updated: 20 November 2025</em></p>
+
+      <div class="card">
+        <h3>1. Overview</h3>
+        <p>
+          Cheerz is a simple drink-tracking app. You log your drinks, see your own stats,
+          and optionally join a group with friends to compare totals on a leaderboard.
+        </p>
+        <p>
+          We only collect the minimum data needed to make those features work and to keep
+          the service reliable.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>2. What data we collect</h3>
+        <ul>
+          <li>
+            <strong>Account data</strong>  
+            Cheerz primarily supports anonymous sign-in via Firebase Authentication.
+            In some cases you may choose to add a display name or avatar. Those are
+            optional and can be changed or removed.
+          </li>
+          <li>
+            <strong>Drink logs</strong>  
+            When you log a drink, we store information such as:
+            date/time, drink type, and basic stats needed to calculate totals
+            and achievements.
+          </li>
+          <li>
+            <strong>Group data</strong>  
+            If you create or join a group, we store the group code, the members’ anonymous
+            IDs, and their drink totals so the leaderboard can work.
+          </li>
+          <li>
+            <strong>Analytics</strong>  
+            Cheerz uses Firebase Analytics / Crashlytics to understand crashes,
+            performance issues, and general usage patterns (for example, which screens
+            are popular). This data is aggregated and not used to create marketing
+            profiles.
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>3. How we use your data</h3>
+        <ul>
+          <li>To save your drink history and show your stats over time.</li>
+          <li>To power group leaderboards when you join or create a group.</li>
+          <li>To maintain security and prevent abuse (for example, rate limiting).</li>
+          <li>To fix bugs and improve the app based on crash and usage data.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>4. Data sharing</h3>
+        <ul>
+          <li>
+            <strong>Service providers</strong> – We use Google Firebase (Firestore,
+            Authentication, Analytics, Crashlytics) to host data and process analytics.
+            These services process data on our behalf.
+          </li>
+          <li>
+            <strong>Friends / groups</strong> – When you join a group, other members can
+            see your display name (if set) and your drink totals inside that group.
+          </li>
+          <li>
+            <strong>No selling of personal data</strong> – We do not sell your personal data.
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>5. Data retention</h3>
+        <p>
+          Your drink history and account data are stored for as long as your account exists.
+          If you stop using the app for a long time, data may eventually be cleaned up as
+          part of maintenance.
+        </p>
+        <p>
+          You can request deletion of your data at any time by emailing
+          <a href="mailto:support@cheerz-app.example">support@cheerz-app.example</a>.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>6. Your rights</h3>
+        <p>Depending on where you live, you may have rights such as:</p>
+        <ul>
+          <li>Accessing the data we store about you.</li>
+          <li>Requesting correction of inaccurate data.</li>
+          <li>Requesting deletion of your account and data.</li>
+          <li>Objecting to certain types of processing.</li>
+        </ul>
+        <p>
+          To exercise these rights, contact us at
+          <a href="mailto:support@cheerz-app.example">support@cheerz-app.example</a>.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>7. Security</h3>
+        <p>
+          Data is stored using Firebase services, which provide encryption in transit
+          and at rest. No system can be 100% secure, but reasonable measures are taken
+          to protect your data.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>8. Children</h3>
+        <p>
+          Cheerz is intended for adults in regions where alcohol consumption is legal.
+          The app should not be used by minors.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>9. Changes to this policy</h3>
+        <p>
+          This policy may be updated from time to time. When it changes, the “Last updated”
+          date at the top of this section will be adjusted. Significant changes may also
+          be mentioned in the app.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>10. Contact</h3>
+        <p>
+          For any privacy-related questions, you can email
+          <a href="mailto:support@cheerz-app.example">support@cheerz-app.example</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Cheerz. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
